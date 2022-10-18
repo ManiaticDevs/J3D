@@ -4,6 +4,6 @@ java game in opengl
 
 i need help
 
-right now : texturing
+right now : matrices and uniform variables
 
-next : matrices and uniform variables
+next : model, view and projection matrices
