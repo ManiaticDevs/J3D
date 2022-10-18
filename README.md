@@ -4,6 +4,6 @@ java game in opengl
 
 i need help
 
-right now : simple window with name and main game loop
+right now : rendering with index buffers
 
-next : vaos and vbos
+next : colouring using shaders
