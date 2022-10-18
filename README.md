@@ -4,6 +4,6 @@ java game in opengl
 
 i need help
 
-right now : colouring using shaders
+right now : texturing
 
-next : texturing
+next : matrices and uniform variables
