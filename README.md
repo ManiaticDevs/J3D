@@ -4,6 +4,6 @@ java game in opengl
 
 i need help
 
-right now : rendering with index buffers
+right now : colouring using shaders
 
-next : colouring using shaders
+next : texturing
