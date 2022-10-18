@@ -2,16 +2,17 @@ package engineTester;
 
 import org.lwjgl.opengl.Display;
 
-import renderEngine.*;;
+import renderEngine.*;
+import shaders.StaticShader;;
 
 public class MainGameLoop {
 	
 	public static void main(String[] args) {
 		
 		DisplayManager.createDisplay();
-		
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
+		StaticShader shader = new StaticShader();
 		
 		float[] vertices = {
 				-0.5f, 0.5f, 0f,//v0
@@ -31,9 +32,13 @@ public class MainGameLoop {
 		while(!Display.isCloseRequested()) {
 			renderer.prepare();
 			//   [game logic here]
+			shader.start();
 			renderer.render(model);
+			//if you dont stop it, it gives this trippy lsd effect
+			shader.stop();
 			DisplayManager.updateDisplay();
 		}
+		shader.cleanUp();
 		loader.cleanUp();
 		DisplayManager.closeDisplay();
 		
