@@ -18,13 +18,14 @@ public class Loader {
 	private List<Integer> vbos = new ArrayList<Integer>(); 
 	private List<Integer> textures = new ArrayList<Integer>(); 
 	
-	public RawModel loadToVAO(float[] positions, float[] textureCoords, int[] indices) {
+	public RawModel loadToVAO(float[] positions,float[] textureCoords,float[] normals,int[] indices){
 		int vaoID = createVAO();
 		bindIndicesBuffer(indices);
-		sDIAL(0, 3, positions);
-		sDIAL(1, 2, textureCoords);
+		sDIAL(0,3,positions);
+		sDIAL(1,2,textureCoords);
+		sDIAL(2,3,normals);
 		unbindVAO();
-		return new RawModel(vaoID, indices.length);
+		return new RawModel(vaoID,indices.length);
 	}
 	
 	public int loadTexture(String fileName) {
@@ -42,13 +43,13 @@ public class Loader {
 	}
 	
 	public void cleanUp() {
-		for (int vao:vaos) {
+		for(int vao:vaos){
 			GL30.glDeleteVertexArrays(vao);
 		}
-		for (int vbo:vbos) {
+		for(int vbo:vbos){
 			GL15.glDeleteBuffers(vbo);
 		}
-		for (int texture:textures) {
+		for(int texture:textures){
 			GL11.glDeleteTextures(texture);
 		}
 	}
@@ -67,7 +68,7 @@ public class Loader {
 		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID);
 		FloatBuffer buffer = sDIFB(data);
 		GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
-		GL20.glVertexAttribPointer(attributeNumber, coordinateSize, GL11.GL_FLOAT, false, 0, 0);
+		GL20.glVertexAttribPointer(attributeNumber,coordinateSize,GL11.GL_FLOAT,false,0,0);
 		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
 	}
 	
