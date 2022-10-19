@@ -4,5 +4,5 @@ java game in opengl
 
 i need help
 
-right now : loading 3d models
-next : per-pixel lighting
+right now : per-pixel lighting
+next : specular lighting
