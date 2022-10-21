@@ -4,5 +4,5 @@ java game in opengl
 
 i need help
 
-right now : per-pixel lighting
-next : specular lighting
+right now : specular lighting
+next : optimizing
