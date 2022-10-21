@@ -8,6 +8,8 @@ public class DisplayManager {
 	private static final int HEIGHT = 720;
 	private static final int FPS_CAP = 120;
 	
+	
+	
 	public static void createDisplay() {
 		
 		ContextAttribs attribs = new ContextAttribs(3,2);

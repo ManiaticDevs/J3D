@@ -1,5 +1,9 @@
 package engineTester;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -7,11 +11,11 @@ import entities.*;
 import models.*;
 import textures.*;
 import renderEngine.*;
-import shaders.StaticShader;;
+import shaders.*;
 
 public class MainGameLoop {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LWJGLException, IOException {
 		
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
@@ -28,8 +32,15 @@ public class MainGameLoop {
 		Light light = new Light(new Vector3f(0,0,-20), new Vector3f(1,1,1));
 		
 		Camera camera = new Camera();
-
+		
+		CursorChanger curChange = new CursorChanger();
+		BufferedImage img = curChange.load("/cursor/default");
+		curChange.loadCursor(img);
+		
+		
+		
 		while(!Display.isCloseRequested()) {
+			
 			entity.increaseRotation(0, 1, 0);
 			camera.move();
 			renderer.prepare();
