@@ -30,8 +30,8 @@ public abstract class ShaderProgram {
 	
 	protected abstract void getAllUniformLocations();
 	
-	protected int getUniformLocation(String uniformName) {
-		return GL20.glGetUniformLocation(programID, uniformName);
+	protected int getUniformLocation(String uniformName){
+		return GL20.glGetUniformLocation(programID,uniformName);
 	}
 	
 	public void start(){
@@ -57,23 +57,23 @@ public abstract class ShaderProgram {
 		GL20.glBindAttribLocation(programID, attribute, variableName);
 	}
 	
-	protected void loadFloat(int location, float value) {
+	protected void loadFloat(int location, float value){
 		GL20.glUniform1f(location, value);
 	}
 	
-	protected void loadVector(int location, Vector3f vector) {
-		GL20.glUniform3f(location, vector.x, vector.y, vector.z);
+	protected void loadVector(int location, Vector3f vector){
+		GL20.glUniform3f(location,vector.x,vector.y,vector.z);
 	}
 	
-	protected void loadBoolean(int location, boolean value) {
+	protected void loadBoolean(int location, boolean value){
 		float toLoad = 0;
-		if (value) {
+		if(value){
 			toLoad = 1;
 		}
 		GL20.glUniform1f(location, toLoad);
 	}
 	
-	protected void loadMatrix(int location, Matrix4f matrix) {
+	protected void loadMatrix(int location, Matrix4f matrix){
 		matrix.store(matrixBuffer);
 		matrixBuffer.flip();
 		GL20.glUniformMatrix4(location, false, matrixBuffer);
@@ -102,4 +102,5 @@ public abstract class ShaderProgram {
 		}
 		return shaderID;
 	}
+
 }

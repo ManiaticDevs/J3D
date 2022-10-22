@@ -1,8 +1,6 @@
 package renderEngine;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.*;
 import java.util.*;
 
@@ -14,9 +12,9 @@ import models.RawModel;
 
 public class Loader {
 	
-	private List<Integer> vaos = new ArrayList<Integer>(); 
-	private List<Integer> vbos = new ArrayList<Integer>(); 
-	private List<Integer> textures = new ArrayList<Integer>(); 
+	private List<Integer> vaos = new ArrayList<Integer>();
+	private List<Integer> vbos = new ArrayList<Integer>();
+	private List<Integer> textures = new ArrayList<Integer>();
 	
 	public RawModel loadToVAO(float[] positions,float[] textureCoords,float[] normals,int[] indices){
 		int vaoID = createVAO();
@@ -31,15 +29,15 @@ public class Loader {
 	public int loadTexture(String fileName) {
 		Texture texture = null;
 		try {
-			texture = TextureLoader.getTexture("PNG", new FileInputStream("res/"+fileName+".png"));
-		} catch (FileNotFoundException e) {
+			texture = TextureLoader.getTexture("PNG",
+					new FileInputStream("res/" + fileName + ".png"));
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Tried to load texture " + fileName + ".png , didn't work");
+			System.exit(-1);
 		}
-		int textureID = texture.getTextureID();
-		textures.add(textureID);
-		return textureID;
+		textures.add(texture.getTextureID());
+		return texture.getTextureID();
 	}
 	
 	public void cleanUp() {
