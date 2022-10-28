@@ -4,7 +4,7 @@ java game in opengl
 
 i need help
 
-note from oikmo : i accidentally fucking forgor to commit the optimization and i almost killed my self over specular lighting
+another note from oikmo : why did i not specify the next part on the last commit?
 
-right now : terrain
-next : 
+right now : transparency
+next : fog

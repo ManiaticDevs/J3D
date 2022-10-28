@@ -7,9 +7,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Owner/eclipse-workspace/.metadata/J3D/lwjgl-2.9.1/jar/lwjgl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Owner/eclipse-workspace/.metadata/J3D/lwjgl-2.9.1/jar/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Owner/eclipse-workspace/.metadata/J3D/lwjgl-2.9.1/jar/PNGDecoder.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Owner/eclipse-workspace/.metadata/J3D/lwjgl-2.9.1/jar/slick-util.jar"/>
+	<classpathentry kind="lib" path="D:/STORAGE/ECLIPSE-WORKSPACE/J3D/lwjgl-2.9.1/jar/lwjgl.jar"/>
+	<classpathentry kind="lib" path="D:/STORAGE/ECLIPSE-WORKSPACE/J3D/lwjgl-2.9.1/jar/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="D:/STORAGE/ECLIPSE-WORKSPACE/J3D/lwjgl-2.9.1/jar/PNGDecoder.jar"/>
+	<classpathentry kind="lib" path="D:/STORAGE/ECLIPSE-WORKSPACE/J3D/lwjgl-2.9.1/jar/slick-util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
