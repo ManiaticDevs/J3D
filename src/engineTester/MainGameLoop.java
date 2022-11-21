@@ -12,6 +12,7 @@ import models.*;
 import renderEngine.*;
 import terrains.*;
 import textures.*;
+import toolbox.*;
 
 public class MainGameLoop {
 
@@ -46,21 +47,19 @@ public class MainGameLoop {
 		Terrain terrain2 = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("textures/grass")));
 		
 		MasterRenderer renderer = new MasterRenderer();
+		Discord.details = "Developing J3D";
+		Discord.main(args);
 		
 		//MAINGAMELOOP
 		while(!Display.isCloseRequested()) {
 			camera.move();
-			
 			renderer.processTerrain(terrain);
 			renderer.processTerrain(terrain2);
-			for(Entity entity:entities){
-				renderer.processEntity(entity);
-			}
-			
+			for(Entity entity:entities) {renderer.processEntity(entity);}
 			renderer.render(light, camera);
 			DisplayManager.updateDisplay();
 		}
-		
+		Discord.isOn = false;
 		renderer.cleanUp();
 		loader.cleanUp();
 		DisplayManager.closeDisplay();
