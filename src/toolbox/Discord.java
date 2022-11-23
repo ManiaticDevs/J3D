@@ -4,8 +4,8 @@ import club.minnced.discord.rpc.*;
 public class Discord {
 	
 	public static boolean isOn = true;
-	public static String details;
-	public static String state;
+	public static String details = "null";
+	public static String state = "null";
 	
 	public static void main(String args[]) {
 		DiscordRPC lib = DiscordRPC.INSTANCE;

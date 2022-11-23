@@ -1,6 +1,6 @@
 package engineTester;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import org.lwjgl.LWJGLException;
@@ -9,6 +9,7 @@ import org.lwjgl.util.vector.Vector3f;
 
 import entities.*;
 import models.*;
+import objConverter.*;
 import renderEngine.*;
 import terrains.*;
 import textures.*;
@@ -17,18 +18,28 @@ import toolbox.*;
 public class MainGameLoop {
 
 	public static void main(String[] args) throws LWJGLException, IOException {
+		//DISCORD
+		Discord.details = "Developing J3D";
+		Discord.state = "";
+		Discord.main(args);
+		
 		//INITIALIZE BEFORE EVERYTHING ELSE
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
 		
-		//MODEL
-		RawModel treeTexture = OBJLoader.loadObjModel("models/tree", loader);
-		RawModel grassTexture = OBJLoader.loadObjModel("models/grassModel", loader);
-		TexturedModel treeModel = new TexturedModel(treeTexture,new ModelTexture(loader.loadTexture("textures/tree")));
-		TexturedModel grassModel = new TexturedModel(grassTexture,new ModelTexture(loader.loadTexture("textures/grassTexture")));
+		//MODELDATA
+		ModelData dataTree = OBJFileLoader.loadOBJ("models/tree");
+		ModelData dataGrass = OBJFileLoader.loadOBJ("models/grassModel");
+		RawModel tree = loader.loadToVAO(dataTree.getVertices(), dataTree.getTextureCoords(), dataTree.getNormals(), dataTree.getIndices());
+		RawModel grass = loader.loadToVAO(dataGrass.getVertices(), dataGrass.getTextureCoords(), dataGrass.getNormals(), dataGrass.getIndices());
+		
+		//TEXTURES
+		TexturedModel treeModel = new TexturedModel(tree,new ModelTexture(loader.loadTexture("textures/tree")));
+		TexturedModel grassModel = new TexturedModel(grass,new ModelTexture(loader.loadTexture("textures/grassTexture")));
 		grassModel.getTexture().setHasTransparency(true);
 		grassModel.getTexture().setUseFakeLighting(true);
-
+		
+		//RANDOM PLACER
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
 		for(int i=0;i<500;i++){
@@ -47,8 +58,6 @@ public class MainGameLoop {
 		Terrain terrain2 = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("textures/grass")));
 		
 		MasterRenderer renderer = new MasterRenderer();
-		Discord.details = "Developing J3D";
-		Discord.main(args);
 		
 		//MAINGAMELOOP
 		while(!Display.isCloseRequested()) {
