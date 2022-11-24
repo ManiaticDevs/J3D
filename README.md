@@ -6,5 +6,5 @@ i need help
 
 another note from oikmo : why did i not specify the next part on the last commit?
 
-right now : transparency
-next : fog
+right now : fog
+next : multitexturing
