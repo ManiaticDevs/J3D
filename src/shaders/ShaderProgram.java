@@ -57,7 +57,7 @@ public abstract class ShaderProgram {
 		GL20.glBindAttribLocation(programID, attribute, variableName);
 	}
 	
-	protected void loadInt(int location, int value) {
+	protected void loadInt(int location, int value){
 		GL20.glUniform1i(location, value);
 	}
 	

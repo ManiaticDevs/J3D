@@ -7,7 +7,8 @@ public class TerrainTexturePack {
 	private TerrainTexture gTexture;
 	private TerrainTexture bTexture;
 	
-	public TerrainTexturePack(TerrainTexture backgroundTexture, TerrainTexture rTexture, TerrainTexture gTexture, TerrainTexture bTexture) {
+	public TerrainTexturePack(TerrainTexture backgroundTexture, TerrainTexture rTexture,
+			TerrainTexture gTexture, TerrainTexture bTexture) {
 		this.backgroundTexture = backgroundTexture;
 		this.rTexture = rTexture;
 		this.gTexture = gTexture;
@@ -18,16 +19,17 @@ public class TerrainTexturePack {
 		return backgroundTexture;
 	}
 
-	public TerrainTexture getRTexture() {
+	public TerrainTexture getrTexture() {
 		return rTexture;
 	}
 
-	public TerrainTexture getGTexture() {
+	public TerrainTexture getgTexture() {
 		return gTexture;
 	}
 
-	public TerrainTexture getBTexture() {
+	public TerrainTexture getbTexture() {
 		return bTexture;
 	}
-	
+
+
 }

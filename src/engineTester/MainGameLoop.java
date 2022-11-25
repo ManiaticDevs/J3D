@@ -28,7 +28,7 @@ public class MainGameLoop {
 		Loader loader = new Loader();
 		
 		//TERRAIN TEXTURES
-		TerrainTexture backgroundTexture = new TerrainTexture(loader.loadTexture("textures/grassy2"));
+		TerrainTexture backgroundTexture = new TerrainTexture(loader.loadTexture("textures/grassy"));
 		TerrainTexture rTexture = new TerrainTexture(loader.loadTexture("textures/mud"));
 		TerrainTexture gTexture = new TerrainTexture(loader.loadTexture("textures/grassFlowers"));
 		TerrainTexture bTexture = new TerrainTexture(loader.loadTexture("textures/path"));
@@ -52,19 +52,19 @@ public class MainGameLoop {
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
 		for(int i=0;i<500;i++){
-			entities.add(new Entity(treeModel, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,3));
+			entities.add(new Entity(treeModel, new Vector3f(random.nextFloat()*400 - 400,0,random.nextFloat() * -400),0,0,0,3));
 		}
 		
 		for(int i=0;i<200;i++){
-			entities.add(new Entity(grassModel, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,1));
+			entities.add(new Entity(grassModel, new Vector3f(random.nextFloat()*400 - 400,0,random.nextFloat() * -400),0,0,0,1));
 		}
 		
 		//ENTITIES
 		Light light = new Light(new Vector3f(20000,20000,20000), new Vector3f(1,1,1));
 		Camera camera = new Camera(new Vector3f(0,5,0));
 		
-		Terrain terrain = new Terrain(0,-1,loader, texturePack, blendMap);
-		Terrain terrain2 = new Terrain(-1,-1,loader, texturePack, blendMap);
+		//Terrain terrain = new Terrain(0,-1,loader, texturePack, blendMap);
+		Terrain terrain = new Terrain(-1,-1,loader, texturePack, blendMap);
 		
 		MasterRenderer renderer = new MasterRenderer();
 		
@@ -72,7 +72,7 @@ public class MainGameLoop {
 		while(!Display.isCloseRequested()) {
 			camera.move();
 			renderer.processTerrain(terrain);
-			renderer.processTerrain(terrain2);
+			//renderer.processTerrain(terrain2);
 			for(Entity entity:entities) {renderer.processEntity(entity);}
 			renderer.render(light, camera);
 			DisplayManager.updateDisplay();
