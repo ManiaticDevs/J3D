@@ -13,12 +13,16 @@ public class Camera {
 	private float roll;
 	private float angleAroundPlayer;
 
-	
 	private static float RUN_SPEED = 20;
 	private static float HORZ_RUN_SPEED = 20;
 	private float currentSpeed = 0;
 	private float horzCurrentSpeed = 0;
 	private boolean isFor, isStrafe;
+	
+	float dx;
+	float dz;
+	float dx1;
+	float dz1;
 	
 	private Player player;
 	
@@ -33,10 +37,10 @@ public class Camera {
 		cAAP();
 		float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
 		float distanceStrafe = horzCurrentSpeed * DisplayManager.getFrameTimeSeconds();
-		float dx1 = (float) (distanceStrafe * Math.sin(Math.toRadians(-yaw + 90)));
-		float dz1 = (float) (distanceStrafe * Math.cos(Math.toRadians(-yaw + 90)));
-		float dx = (float) (distance * Math.sin(Math.toRadians(-yaw)));
-		float dz = (float) (distance * Math.cos(Math.toRadians(-yaw)));
+		dx1 = (float) (distanceStrafe * Math.sin(Math.toRadians(-yaw + 90)));
+		dz1 = (float) (distanceStrafe * Math.cos(Math.toRadians(-yaw + 90)));
+		dx = (float) (distance * Math.sin(Math.toRadians(-yaw)));
+		dz = (float) (distance * Math.cos(Math.toRadians(-yaw)));
 		if(!player.isFPS) {
 			move();
 			if(isFor) {
@@ -95,7 +99,7 @@ public class Camera {
 	private void cAAP() {
 		if(player.isFPS) {
 			position.x = player.getPosition().x;
-			position.y = player.getPosition().y + 4;
+			position.y = player.getPosition().y + 5; //5 to match with head 
 			position.z = player.getPosition().z;
 			
 			

@@ -26,10 +26,18 @@ public class Loader {
 		return new RawModel(vaoID,indices.length);
 	}
 	
-	public int loadTexture(String fileName) {
+	public int loadTexture(String fileName, boolean isPixel) {
 		Texture texture = null;
+		
 		try {
 			texture = TextureLoader.getTexture("PNG", new FileInputStream("res/" + fileName + ".png"));
+			GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
+			if(isPixel) {
+				GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+			}
+			
+			GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR_MIPMAP_LINEAR);
+			//GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, -1); make mipmap not obvious
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("Tried to load texture " + fileName + ".png , didn't work");

@@ -3,29 +3,25 @@ package org.J3D.renderEngine;
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
 
-import org.lwjgl.LWJGLException;
-import org.lwjgl.Sys;
+import org.lwjgl.*;
 import org.lwjgl.opengl.*;
 
-import org.J3D.toolbox.CursorChanger;
-import org.J3D.toolbox.IconUtils;
+import org.J3D.toolbox.*;
 
 public class DisplayManager {
-	private static final int WIDTH = 1280;
-	private static final int HEIGHT = 720;
-	private static final int FPS_CAP = 120;
+	private static int WIDTH = 1280;
+	private static int HEIGHT = 720;
+	private static int FPS_CAP = 120;
 	
 	private static long lastFrameTime;
 	private static float delta;
 	static long startTime = System.nanoTime();
     static int frames = 0;
-	
+    
 	public static void createDisplay() throws LWJGLException {
 		ContextAttribs attribs = new ContextAttribs(3,2);
 		attribs.withForwardCompatible(true).withProfileCore(true);
-		
 		final ByteBuffer[] windowsFavicon = IconUtils.getFavicon();
-		
 		try {
 			Display.setIcon(windowsFavicon);
 			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
@@ -34,7 +30,6 @@ public class DisplayManager {
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
-		
 		GL11.glViewport(0, 0, WIDTH, HEIGHT);
 		
 		//CURSOR (PLACE AFTER CREATION)

@@ -7,9 +7,8 @@ import org.J3D.toolbox.Maths;
 
 public class StaticShader extends ShaderProgram{
 	
-	private static final String RES_LOC = "src/org/J3D/";
-	private static final String VERTEX_FILE = RES_LOC + "shaders/vertexShader.txt";
-	private static final String FRAGMENT_FILE = RES_LOC + "shaders/fragmentShader.txt";
+	private static final String VERTEX_FILE = "vertexShader.txt";
+	private static final String FRAGMENT_FILE = "fragmentShader.txt";
 	
 	private int location_transformationMatrix;
 	private int location_projectionMatrix;
