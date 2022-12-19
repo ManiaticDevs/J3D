@@ -67,9 +67,9 @@ public class Terrain {
 		float gridSquareSize = SIZE / ((float)heights.length-1);
 		int gridX = (int) Math.floor(terrainX/gridSquareSize);
 		int gridZ = (int) Math.floor(terrainZ/gridSquareSize);
-		if(gridX >= heights.length-1 || gridZ >= heights.length-1 || gridX < 0 || gridZ < 0) {
-			return 0;
-		}
+		if (gridX+1>=heights.length||gridZ+1>=heights.length||gridX<0||gridZ<0) {
+			   return 0;
+			}
 		float xCoord = (terrainX % gridSquareSize)/gridSquareSize;
 		float zCoord = (terrainZ % gridSquareSize)/gridSquareSize;
 		float answer;
@@ -82,13 +82,22 @@ public class Terrain {
 	}
 	
 	private RawModel generateTerrain(Loader loader, String heightMap) {
-		
 		BufferedImage image = null;
-		try {
-			image = ImageIO.read(new File("res/" + heightMap + ".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(heightMap == null) {
+			try {
+				image = ImageIO.read(new File("res/textures/flat/blank.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				image = ImageIO.read(new File("res/" + heightMap + ".png"));
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		System.out.println(heightMap);
 		int VERTEX_COUNT = image.getHeight();
 		
 		int count = VERTEX_COUNT * VERTEX_COUNT;
@@ -137,7 +146,7 @@ public class Terrain {
 		float heightR = getHeight(x+1, z, image);
 		float heightD = getHeight(x, z-1, image);
 		float heightU = getHeight(x, z+1, image);
-		Vector3f normal = new Vector3f(heightL-heightR, 2f, heightD-heightU);
+		Vector3f normal = new Vector3f(heightL-heightR, 4f, heightD-heightU);
 		normal.normalise();
 		return normal;
 	}
@@ -151,5 +160,9 @@ public class Terrain {
 		height /= MAX_PIXEL_COLOUR/2f;
 		height *= MAX_HEIGHT;
 		return height;
+	}
+
+	public int getSize() {
+		return (int) SIZE;
 	}
 }
