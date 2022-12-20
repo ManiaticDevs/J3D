@@ -13,7 +13,7 @@ import org.J3D.entities.Entity;
 import org.J3D.models.RawModel;
 import org.J3D.models.TexturedModel;
 import org.J3D.shaders.StaticShader;
-import org.J3D.textures.ModelTexture;
+import org.J3D.textures.model.ModelTexture;
 import org.J3D.toolbox.Maths;
 
 public class EntityRenderer {

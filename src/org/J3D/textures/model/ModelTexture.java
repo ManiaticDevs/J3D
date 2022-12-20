@@ -1,4 +1,4 @@
-package org.J3D.textures;
+package org.J3D.textures.model;
 
 public class ModelTexture {
 	

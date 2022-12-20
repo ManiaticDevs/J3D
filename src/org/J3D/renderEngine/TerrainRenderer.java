@@ -8,7 +8,7 @@ import org.lwjgl.util.vector.*;
 import org.J3D.models.*;
 import org.J3D.shaders.TerrainShader;
 import org.J3D.terrains.Terrain;
-import org.J3D.textures.TerrainTexturePack;
+import org.J3D.textures.terrain.TerrainTexturePack;
 import org.J3D.toolbox.Maths;
 
 public class TerrainRenderer {

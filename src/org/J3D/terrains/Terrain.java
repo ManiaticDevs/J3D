@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 import org.J3D.models.RawModel;
 import org.J3D.renderEngine.Loader;
-import org.J3D.textures.*;
+import org.J3D.textures.terrain.*;
 import org.J3D.toolbox.Maths;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;

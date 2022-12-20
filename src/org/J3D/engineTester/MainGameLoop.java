@@ -61,7 +61,7 @@ public class MainGameLoop {
 		TexturedModel playerModel = new TexturedModel(playerRaw, new ModelTexture(loader.loadTexture("textures/flat/blank", false)));
 		
 		fernModel.getTexture().setHasTransparency(true);
-		fernModel.getTexture().setUseFakeLighting(true);
+		fernModel.getTexture().setUseFakeLighting(false);
 		fernModel.getTexture().setNumberOfRows(2);
 		playerModel.getTexture().setUseFakeLighting(true);
 		//RANDOM PLACER
@@ -77,7 +77,7 @@ public class MainGameLoop {
 					entities.add(new Entity(treeModel, new Vector3f(x,y,z),0,random.nextFloat() * 360,random.nextFloat() * 0.1f + 0.6f,5));
 				}
 				
-				if(i % 1 == 0) {
+				if(i % 10 == 0) {
 					float x = random.nextInt((int) terrain.getSize()) + terrain.getX();
 					float z = random.nextInt((int) terrain.getSize() ) + terrain.getZ();
 					float y = terrain.getHeightOfTerrain(x, z);
