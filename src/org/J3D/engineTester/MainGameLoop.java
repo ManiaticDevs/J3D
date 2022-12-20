@@ -3,14 +3,18 @@ package org.J3D.engineTester;
 import java.util.*;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.opengl.*;
 import org.J3D.entities.*;
 import org.J3D.models.*;
 import org.J3D.objConverter.*;
 import org.J3D.renderEngine.*;
+import org.J3D.renderEngine.renderers.*;
 import org.J3D.terrains.*;
-import org.J3D.textures.*;
+import org.J3D.textures.terrain.*;
+import org.J3D.textures.gui.GuiTexture;
+import org.J3D.textures.model.*;
 import org.J3D.toolbox.*;
 
 public class MainGameLoop {
@@ -87,8 +91,6 @@ public class MainGameLoop {
 			}
 		}	
 		
-		
-		
 		//ENTITIES
 		Light light = new Light(new Vector3f(3000,2000,3000), new Vector3f(1.1f,1.1f,1.1f));
 		Camera cam = new Camera();
@@ -96,38 +98,34 @@ public class MainGameLoop {
 		
 		cam = new Camera(player);
 		entities.add(player);
+		
+		List<GuiTexture> guis = new ArrayList<GuiTexture>();
+		GuiTexture gui = new GuiTexture(loader.loadTexture("textures/flat/minos", false), new Vector2f(0.5f, 0.5f), new Vector2f(0.25f, 0.25f));
+		guis.add(gui);
+		
+		GuiRenderer guiRenderer = new GuiRenderer(loader);
 		//MAINGAMELOOP
-		
-		
 		while(!Display.isCloseRequested()) {
 			for(Entity entity:entities) {renderer.processEntity(entity);}
-			for (Terrain terrain11 : terrains) {
-				renderer.processTerrain(terrain11);
-				if (player.getPosition().x < terrain11.getX() + Terrain.SIZE && player.getPosition().x >= terrain11.getX() && player.getPosition().z >= terrain11.getZ() && player.getPosition().z < terrain11.getZ() + Terrain.SIZE) {
-					player.move(cam.getYaw(), terrain11);
+			for (Terrain terrain : terrains) {
+				renderer.processTerrain(terrain);
+				if (player.getPosition().x < terrain.getX() + Terrain.SIZE && player.getPosition().x >= terrain.getX() && player.getPosition().z >= terrain.getZ() && player.getPosition().z < terrain.getZ() + Terrain.SIZE) {
+					player.move(cam.getYaw(), terrain);
 				}
 			}
 			
 			cam.update();
-			
 			renderer.render(light, cam);
-			if(Keyboard.isKeyDown(Keyboard.KEY_F11)) {
-				if(Display.isFullscreen()) {
-					Display.setDisplayMode(new DisplayMode(1280, 720));
-					Display.setFullscreen(false);
-				} else {
-					Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
-				}
-				
-			}
+			guiRenderer.render(guis);
 			
 			DisplayManager.updateDisplay();
-			
+			//System.out.println("fps: " + DisplayManager.logFrame());
 		}
 		//ON WINDOW CLOSE
 		Discord.isOn = false;
 		renderer.cleanUp();
 		loader.cleanUp();
+		guiRenderer.cleanUp();
 		DisplayManager.closeDisplay();
 	}
 }

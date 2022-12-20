@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 
 import org.lwjgl.*;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.*;
 import org.J3D.toolbox.*;
 
@@ -16,6 +17,7 @@ public class DisplayManager  {
 	private static int WIDTH = 1280;
 	private static int HEIGHT = 720;
 	private static int FPS_CAP = 120;
+	private static int balls;
 	
 	private static long lastFrameTime;
 	private static float delta;
@@ -63,6 +65,16 @@ public class DisplayManager  {
 		}
 		Display.sync(FPS_CAP);
 		Display.update();
+		if(Keyboard.isKeyDown(Keyboard.KEY_F11)) {
+			if(Display.isFullscreen()) {
+				Display.setDisplayMode(new DisplayMode(1280, 720));
+				Display.setFullscreen(false);
+			} else {
+				Display.setDisplayModeAndFullscreen(Display.getDesktopDisplayMode());
+			}
+			
+		}
+		
 		long currentFrameTime = getCurrentTime();
 		delta = (currentFrameTime - lastFrameTime)/1000f;
 		lastFrameTime = currentFrameTime;
@@ -70,14 +82,17 @@ public class DisplayManager  {
 	
 	
     public static int logFrame() {
+    	
         frames++;
         if(System.nanoTime() - startTime >= 1000000000) {
-            System.out.println("fps: " + frames);
+        	if(frames != 0) {
+        		balls = frames;
+        	}
+            
             frames = 0;
             startTime = System.nanoTime();
         }
-        
-        return frames;
+        return balls;
     }
 	
 	public static float getFrameTimeSeconds() {

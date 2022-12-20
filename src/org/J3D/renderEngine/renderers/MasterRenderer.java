@@ -1,4 +1,4 @@
-package org.J3D.renderEngine;
+package org.J3D.renderEngine.renderers;
 
 import java.io.*;
 import java.util.*;
@@ -9,6 +9,8 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.J3D.entities.*;
 import org.J3D.models.TexturedModel;
 import org.J3D.shaders.*;
+import org.J3D.shaders.main.StaticShader;
+import org.J3D.shaders.terrain.TerrainShader;
 import org.J3D.terrains.Terrain;
 
 public class MasterRenderer {

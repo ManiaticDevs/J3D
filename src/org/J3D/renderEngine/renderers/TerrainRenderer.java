@@ -1,4 +1,4 @@
-package org.J3D.renderEngine;
+package org.J3D.renderEngine.renderers;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.lwjgl.opengl.*;
 import org.lwjgl.util.vector.*;
 
 import org.J3D.models.*;
-import org.J3D.shaders.TerrainShader;
+import org.J3D.shaders.terrain.TerrainShader;
 import org.J3D.terrains.Terrain;
 import org.J3D.textures.terrain.TerrainTexturePack;
 import org.J3D.toolbox.Maths;

@@ -1,4 +1,4 @@
-package org.J3D.renderEngine;
+package org.J3D.renderEngine.renderers;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.J3D.entities.Entity;
 import org.J3D.models.RawModel;
 import org.J3D.models.TexturedModel;
-import org.J3D.shaders.StaticShader;
+import org.J3D.shaders.main.StaticShader;
 import org.J3D.textures.model.ModelTexture;
 import org.J3D.toolbox.Maths;
 

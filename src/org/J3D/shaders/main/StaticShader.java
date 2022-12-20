@@ -1,14 +1,15 @@
-package org.J3D.shaders;
+package org.J3D.shaders.main;
 
 import org.lwjgl.util.vector.*;
 
 import org.J3D.entities.*;
+import org.J3D.shaders.ShaderProgram;
 import org.J3D.toolbox.Maths;
 
 public class StaticShader extends ShaderProgram{
 	
-	private static final String VERTEX_FILE = "vertexShader.txt";
-	private static final String FRAGMENT_FILE = "fragmentShader.txt";
+	private static final String VERTEX_FILE = "main/vertexShader.txt";
+	private static final String FRAGMENT_FILE = "main/fragmentShader.txt";
 	
 	private int location_transformationMatrix;
 	private int location_projectionMatrix;

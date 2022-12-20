@@ -1,6 +1,6 @@
 package org.J3D.models;
 
-import org.J3D.textures.*;
+import org.J3D.textures.model.*;
 
 public class TexturedModel {
 	

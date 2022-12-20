@@ -1,14 +1,15 @@
-package org.J3D.shaders;
+package org.J3D.shaders.terrain;
 
 import org.lwjgl.util.vector.*;
 
 import org.J3D.entities.*;
+import org.J3D.shaders.ShaderProgram;
 import org.J3D.toolbox.Maths;
 
 public class TerrainShader extends ShaderProgram{
 	
-	private static final String VERTEX_FILE = "terrainVertexShader.txt";
-	private static final String FRAGMENT_FILE = "terrainFragmentShader.txt";
+	private static final String VERTEX_FILE = "terrain/terrainVertexShader.txt";
+	private static final String FRAGMENT_FILE = "terrain/terrainFragmentShader.txt";
 	
 	private int location_transformationMatrix;
 	private int location_projectionMatrix;
